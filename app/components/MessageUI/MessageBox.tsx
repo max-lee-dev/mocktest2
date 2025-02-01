@@ -8,11 +8,11 @@ type MessageBoxProps = {
 const AssistantMessageBox = ({message}: MessageBoxProps) => {
   return (
     <div className={"flex flex-col "}>
-      <PopoutBorder className={"bg-gray-100 flex justify-start"}>
+      <PopoutBorder className={"p-4 bg-gray-100 flex justify-start"}>
         {message.text}
       </PopoutBorder>
       {message.when && (
-        <text className={"pl-2 pt-2 text-gray-500 text-xs"}>
+        <text className={"pl-2 p-4 pt-2 text-gray-500 text-xs"}>
           {message.when.toLocaleString().replace(",", "")}
         </text>
       )}

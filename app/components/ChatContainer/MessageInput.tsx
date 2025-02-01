@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import {FaPaperPlane} from "react-icons/fa";
-import PopoutBorder from "@/app/components/CustomUI/PopoutBorder";
+import SpringyPopoutBorder from "@/app/components/CustomUI/SpringyPopupBorder";
 
 interface MessageInputProps {
   onSend: (message: string) => void;
@@ -38,7 +38,7 @@ const MessageInput: React.FC<MessageInputProps> = ({onSend}) => {
         />
 
       </div>
-      <PopoutBorder className={"ml-4 "}>
+      <SpringyPopoutBorder className={"ml-4 "}>
         <button
           onClick={handleSend}
 
@@ -46,7 +46,7 @@ const MessageInput: React.FC<MessageInputProps> = ({onSend}) => {
         >
           <FaPaperPlane/>
         </button>
-      </PopoutBorder>
+      </SpringyPopoutBorder>
     </div>
   )
     ;

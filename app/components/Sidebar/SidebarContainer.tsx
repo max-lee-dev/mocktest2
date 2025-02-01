@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import OtherChatButton from "@/app/components/Sidebar/OtherChatButton";
 import PopuputBorder from "@/app/components/CustomUI/PopoutBorder";
+import SpringyPopoutBorder from "@/app/components/CustomUI/SpringyPopupBorder";
 
 const SidebarContainer = () => {
   return (
@@ -12,15 +14,12 @@ const SidebarContainer = () => {
           <h1 className="p-4 text-2xl">
             Chatrooms
           </h1>
-          <PopuputBorder className="p-2 pt-3 px-6 bg-cyan font-bold text-black">
-            <div className="text-2xl">
-              <button
-                className="flex items-center gap-2"
-              >
-                +
-              </button>
+          <SpringyPopoutBorder className="cursor-pointer p-2 pt-3 px-6 bg-cyan font-bold text-black">
+            <div className=" text-2xl">
+
+              +
             </div>
-          </PopuputBorder>
+          </SpringyPopoutBorder>
         </div>
 
         <div className="flex pt-4 flex-col w-full">

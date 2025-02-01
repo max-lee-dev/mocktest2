@@ -2,26 +2,31 @@ import React from 'react';
 import PopoutBorder from "@/app/components/CustomUI/PopoutBorder";
 import {CustomMessage} from "@/app/utils/types";
 
-const AssistantMessageBox = ({message}: CustomMessage) => {
+
+const AssistantMessageBox: React.FC<{ message: CustomMessage }> = ({message}) => {
   return (
-    <PopoutBorder className={"bg-gray-100 justify-start"}>
+    <PopoutBorder className={"bg-green-100 flex justify-start"}>
       {message.text}
     </PopoutBorder>
   );
 }
 
-const UserMessageBox = ({message}: CustomMessage) => {
+
+const UserMessageBox: React.FC<{ message: CustomMessage }> = ({message}) => {
   return (
-    <PopoutBorder
-      className={"bg-blue justify-end text-white"}
-    >
+    <PopoutBorder className={"bg-blue-100 flex justify-end"}>
       {message.text}
     </PopoutBorder>
   );
 }
-const MessageBox = ({message}: CustomMessage) => {
+
+interface MessageBoxProps {
+  message: CustomMessage;
+}
+
+const MessageBox: React.FC<MessageBoxProps> = ({message}) => {
   return (
-    <div className={"flex justify-end"}>
+    <div className={"flex w-full"}>
       {message.role === "assistant" ? (
         <AssistantMessageBox message={message}/>
       ) : (

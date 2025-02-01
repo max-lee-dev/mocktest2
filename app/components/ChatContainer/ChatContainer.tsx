@@ -77,8 +77,6 @@ export default function ChatContainer() {
           <MessageList messages={messages}/>
           <div className={"flex-none py-4"}>
             <MessageInput onSend={handleSend}/>
-
-
           </div>
         </div>
       </PopoutBorder>

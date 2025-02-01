@@ -14,7 +14,7 @@ const MessageList: React.FC<MessageListProps> = ({messages}) => {
   return (
     <div className={" text-black"}>
       {messages.map((message, index) => (
-        <div key={index} className="p-2">
+        <div key={index} className="w-full p-2">
           <MessageBox message={message}/>
         </div>
       ))}

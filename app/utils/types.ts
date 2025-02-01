@@ -3,7 +3,7 @@ import {CoreMessage} from "ai";
 export type CustomMessage = {
   text: string;
   role: "user" | "assistant";
-  timestamp: Date;
+  when: Date;
   chatroomID: string;
 }
 

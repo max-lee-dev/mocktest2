@@ -38,17 +38,18 @@ export default function ChatContainer() {
     const chatroomID = "someChatroomID"; // Replace with actual chatroom ID
     const messageData: CustomMessage = {
       text: message,
-      timestamp: new Date(),
+      when: new Date(),
       chatroomID,
       role: "user",
     }
+    setMessages([...messages, messageData]);
     await sendMessage(messageData);
 
 
     const response = await GetChatResponse({message: messageData, context: context}); // Adjust context as needed
     const assistantMessage: CustomMessage = {
       text: response,
-      timestamp: new Date(),
+      when: new Date(),
       chatroomID,
       role: "assistant",
     }
@@ -70,7 +71,7 @@ export default function ChatContainer() {
 
   return (
     <div className={"min-h-[100%] w-[70%]"}>
-      <PopoutBorder className={"text-black"}>
+      <PopoutBorder className={"text-black bg-white"}>
         ChatContainer
         <div className={"flex flex-col h-full"}>
           <div className={"flex-1"}>MessageList</div>

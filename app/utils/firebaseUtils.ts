@@ -1,4 +1,4 @@
-import {collection, doc, serverTimestamp, setDoc} from "firebase/firestore";
+import {collection, doc, setDoc} from "firebase/firestore";
 import {db} from "@/app/utils/firebase";
 
 import {CustomMessage} from "@/app/utils/types";
@@ -11,7 +11,7 @@ export const sendMessage = async (messageData: CustomMessage): Promise<void> => 
   // Add timestamp if not included
   const finalMessage = {
     ...messageData,
-    timestamp: serverTimestamp(), // Use Firestore server timestamp
+    when: new Date(), // Use Firestore server timestamp
   };
 
   await setDoc(messageRef, finalMessage);

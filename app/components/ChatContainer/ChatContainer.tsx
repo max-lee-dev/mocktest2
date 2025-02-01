@@ -70,9 +70,9 @@ export default function ChatContainer() {
 
 
   return (
-    <div className={"min-h-[100%] w-[70%]"}>
-      <PopoutBorder className={"text-black bg-white"}>
-        <h1 className={"text-2xl font-bold px-4 py-4"}>Chat</h1>
+    <div className={"min-h-[90%] w-full"}>
+      <PopoutBorder className={"p-4 text-black bg-white"}>
+        <h1 className={"text-4xl font-extrabold border-b-2 border-black mx-4 py-4"}>Chat</h1>
 
         <div className={"flex flex-col h-full"}>
           <MessageList messages={messages}/>

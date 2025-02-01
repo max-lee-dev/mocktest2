@@ -8,6 +8,15 @@ interface MessageInputProps {
 const MessageInput: React.FC<MessageInputProps> = ({onSend}) => {
   const [message, setMessage] = useState("");
 
+  // If user presses enter, send the message
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
+
   const handleSend = () => {
     if (message.trim()) {
       onSend(message);
@@ -20,12 +29,14 @@ const MessageInput: React.FC<MessageInputProps> = ({onSend}) => {
       <input
         type="text"
         value={message}
+        onKeyDown={handleKeyDown}
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Type a message..."
         className="flex-grow p-1 focus:outline-none and focus:ring-0 rounded "
       />
       <button
         onClick={handleSend}
+
         className="ml-2 px-4 py-2 bg-blue-500 text-black rounded flex items-center gap-2"
       >
         <FaPaperPlane/>

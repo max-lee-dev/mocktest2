@@ -1,6 +1,5 @@
 import {createOpenAI} from '@ai-sdk/openai';
 import {CoreAssistantMessage, CoreMessage, CoreSystemMessage, CoreUserMessage, generateText} from 'ai';
-
 import {ChatGPTProps, CustomMessage} from "@/app/utils/types";
 
 const openai = createOpenAI({

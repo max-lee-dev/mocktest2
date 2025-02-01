@@ -11,11 +11,11 @@ const AssistantMessageBox = ({message}: MessageBoxProps) => {
       <PopoutBorder className={"p-4 bg-gray-100 flex justify-start"}>
         {message.text}
       </PopoutBorder>
-      {message.when && (
-        <div className={"pl-2 p-4 pt-2 text-gray-500 text-xs"}>
-          {message.when.toLocaleString().replace(",", "")}
-        </div>
-      )}
+      {/*{message.when.seconds && (*/}
+      {/*  <div className={"pl-2 p-4 pt-2 text-gray-500 text-xs"}>*/}
+      {/*    /!*{convertTimestampToSinceString(message.when.seconds)}*!/*/}
+      {/*  </div>*/}
+      {/*)}*/}
     </div>
 
   );
@@ -35,6 +35,9 @@ const UserMessageBox = ({message}: MessageBoxProps) => {
 
 
 const MessageBox: React.FC<MessageBoxProps> = ({message}) => {
+  if (!message) {
+    return null;
+  }
   return (
     <div className={"flex w-full"}>
       {message.role === "assistant" ? (

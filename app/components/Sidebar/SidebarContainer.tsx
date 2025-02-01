@@ -39,9 +39,8 @@ const SidebarContainer = () => {
             Chatrooms
           </h1>
           <div onClick={handleNewRoom}>
-            <SpringyPopoutBorder className="cursor-pointer p-2 pt-3 px-6 bg-cyan font-bold text-black">
-              <div className=" text-2xl">
-
+            <SpringyPopoutBorder className="cursor-pointer m-1 p-1  h-12 px-4 font-bold text-black">
+              <div className="justify-center self-center items-center flex flex-col text-2xl">
                 +
               </div>
             </SpringyPopoutBorder>

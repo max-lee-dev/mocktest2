@@ -41,7 +41,7 @@ export default function ChatContainer({chatroomID}: ChatContainerProps) {
     // Replace with actual chatroom ID
     const messageData: CustomMessage = {
       text: message,
-      when: new Date(),
+      when: Date.now(),
       chatroomID,
       role: "user",
     }
@@ -52,7 +52,7 @@ export default function ChatContainer({chatroomID}: ChatContainerProps) {
     const response = await GetChatResponse({message: messageData, context: context}); // Adjust context as needed
     const assistantMessage: CustomMessage = {
       text: response,
-      when: new Date(),
+      when: Date.now(),
       chatroomID,
       role: "assistant",
     }

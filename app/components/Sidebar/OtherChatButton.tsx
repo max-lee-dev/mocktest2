@@ -15,10 +15,16 @@ export default function OtherChatButton({chatroomID}: OtherChatButtonProps): JSX
 
   return (
     <div onClick={handleClick}>
-      <SpringyPopoutBorder className={"p-4 py-8 bg-yellow font-bold text-black w-full flex-1"}>
+      <SpringyPopoutBorder className={"p-4 py-6 bg-yellow/20 font-bold text-black w-full flex-1"}>
         <div className={"flex flex-col h-full"}>
-          {chatroomID}
+          <div className={"flex flex-col h-full"}>
+            {chatroomID}
+          </div>
+          <div className={"flex text-gray-500 font-light text-sm flex-col h-full"}>
+            2/1/2025
+          </div>
         </div>
+
       </SpringyPopoutBorder>
     </div>
 

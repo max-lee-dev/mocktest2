@@ -72,9 +72,9 @@ export default function ChatContainer() {
   return (
     <div className={"min-h-[100%] w-[70%]"}>
       <PopoutBorder className={"text-black bg-white"}>
-        ChatContainer
+        <h1 className={"text-2xl font-bold px-4 py-4"}>Chat</h1>
+
         <div className={"flex flex-col h-full"}>
-          <div className={"flex-1"}>MessageList</div>
           <MessageList messages={messages}/>
           <div className={"flex-none py-4"}>
             <MessageInput onSend={handleSend}/>

@@ -1,5 +1,6 @@
 import React from "react";
 import {CustomMessage} from "@/app/utils/types";
+import MessageBox from "@/app/components/MessageUI/MessageBox";
 
 
 interface MessageListProps {
@@ -14,8 +15,7 @@ const MessageList: React.FC<MessageListProps> = ({messages}) => {
     <div className={" text-black"}>
       {messages.map((message, index) => (
         <div key={index} className="p-2">
-          <p>{message.text}</p>
-          <span className="text-gray-500 text-sm">{message.timestamp.toString()}</span>
+          <MessageBox message={message}/>
         </div>
       ))}
     </div>

@@ -14,8 +14,6 @@ export default function ChatContainer() {
 
   const [context, setContext] = useState<CoreMessage[]>([]);
   const [messages, setMessages] = useState<CustomMessage[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // Fetch initial messages from Firestore
@@ -77,7 +75,7 @@ export default function ChatContainer() {
         <div className={"flex flex-col h-full"}>
           <div className={"flex-1"}>MessageList</div>
           <MessageList messages={messages}/>
-          <div className={"flex-none pb-4"}>
+          <div className={"flex-none py-4"}>
             <MessageInput onSend={handleSend}/>
 
 

@@ -26,7 +26,7 @@ const MessageInput: React.FC<MessageInputProps> = ({onSend}) => {
   };
 
   return (
-    <div className={"flex flex-row justify-between"}>
+    <div className={"px-2 flex flex-row justify-between"}>
       <div className="flex w-full border-2 border-black rounded-lg items-center p-2 ">
         <input
           type="text"
@@ -38,11 +38,11 @@ const MessageInput: React.FC<MessageInputProps> = ({onSend}) => {
         />
 
       </div>
-      <PopoutBorder>
+      <PopoutBorder className={"ml-4 "}>
         <button
           onClick={handleSend}
 
-          className=" bg-yellow text-white border-black bg-blue-500 rounded flex items-center gap-2"
+          className="p-4 w-16 justify-center rounded-xl bg-yellow text-white border-black text-xl bg-blue-500 flex items-center gap-2"
         >
           <FaPaperPlane/>
         </button>

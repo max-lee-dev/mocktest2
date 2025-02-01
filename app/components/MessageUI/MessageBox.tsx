@@ -25,7 +25,7 @@ const AssistantMessageBox = ({message}: MessageBoxProps) => {
 const UserMessageBox = ({message}: MessageBoxProps) => {
   return (
     <div className={"flex w-full justify-end"}>
-      <PopoutBorder className={"bg-blue text-white"}>
+      <PopoutBorder className={"p-4 bg-blue text-white"}>
         {message.text}
       </PopoutBorder>
     </div>

@@ -51,7 +51,7 @@ const SidebarContainer = () => {
         <div className="flex pt-4 flex-col w-full">
           <div className="flex-1 space-y-4 w-full p-2">
             {chatroomIDs.map((chatroomID, index) => (
-              <OtherChatButton chatroomID={chatroomID} className="flex flex-row justify-between">
+              <OtherChatButton key={index} chatroomID={chatroomID} className="flex flex-row justify-between">
                 <div className="text-xl font-bold">
                   {chatroomID}
                 </div>
@@ -62,6 +62,6 @@ const SidebarContainer = () => {
       </PopuputBorder>
     </div>
   );
-};
 
+}
 export default SidebarContainer;

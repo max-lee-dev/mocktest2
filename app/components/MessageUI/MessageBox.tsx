@@ -12,9 +12,9 @@ const AssistantMessageBox = ({message}: MessageBoxProps) => {
         {message.text}
       </PopoutBorder>
       {message.when && (
-        <text className={"pl-2 p-4 pt-2 text-gray-500 text-xs"}>
+        <div className={"pl-2 p-4 pt-2 text-gray-500 text-xs"}>
           {message.when.toLocaleString().replace(",", "")}
-        </text>
+        </div>
       )}
     </div>
 

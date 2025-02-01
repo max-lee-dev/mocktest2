@@ -1,31 +1,61 @@
 "use client";
-import React from "react";
-import OtherChatButton from "@/app/components/Sidebar/OtherChatButton";
+import React, {useEffect, useState} from "react";
 import PopuputBorder from "@/app/components/CustomUI/PopoutBorder";
 import SpringyPopoutBorder from "@/app/components/CustomUI/SpringyPopupBorder";
+import OtherChatButton from "@/app/components/Sidebar/OtherChatButton";
+import {createNewChatroom, retrieveChatroomIDs} from "@/app/utils/firebaseUtils";
+import {useRouter} from "next/navigation";
 
 const SidebarContainer = () => {
+  const [chatroomIDs, setChatroomIDs] = useState<string[]>([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    async function fetchChatroomIDs() {
+      const chatroomIDs = await retrieveChatroomIDs();
+      setChatroomIDs(chatroomIDs);
+    }
+
+    fetchChatroomIDs().catch((error) => {
+      console.error("Error fetching chatroom IDs:", error);
+    });
+
+  }, []);
+
+  async function handleNewRoom() {
+    await createNewChatroom().then((res) => {
+      console.log("hi: " + res)
+      router.push(`/chatroom/${res}`);
+
+    })
+  }
+
   return (
     <div className="h-full flex flex-col w-full p-4">
-
 
       <PopuputBorder className="p-6 bg-white max-h-[100vh] overflow-y-auto font-bold text-black w-full flex-1">
         <div className="border-b-2 pb-2 border-black flex flex-row justify-between">
           <h1 className="p-4 text-2xl">
             Chatrooms
           </h1>
-          <SpringyPopoutBorder className="cursor-pointer p-2 pt-3 px-6 bg-cyan font-bold text-black">
-            <div className=" text-2xl">
+          <div onClick={handleNewRoom}>
+            <SpringyPopoutBorder className="cursor-pointer p-2 pt-3 px-6 bg-cyan font-bold text-black">
+              <div className=" text-2xl">
 
-              +
-            </div>
-          </SpringyPopoutBorder>
+                +
+              </div>
+            </SpringyPopoutBorder>
+          </div>
         </div>
 
         <div className="flex pt-4 flex-col w-full">
           <div className="flex-1 space-y-4 w-full p-2">
-            {Array.from({length: 20}, (_, i) => (
-              <OtherChatButton key={i} chatroomID={`Chatroom ${i + 1}`}/>
+            {chatroomIDs.map((chatroomID, index) => (
+              <OtherChatButton chatroomID={chatroomID} className="flex flex-row justify-between">
+                <div className="text-xl font-bold">
+                  {chatroomID}
+                </div>
+              </OtherChatButton>
             ))}
           </div>
         </div>

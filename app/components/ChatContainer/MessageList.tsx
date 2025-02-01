@@ -25,7 +25,7 @@ const MessageList: React.FC<MessageListProps> = ({messages}) => {
   return (
     <div className={"overflow-y-scroll h-[80vh] text-black"}>
       {messages.map((message, index) => (
-        <div key={index} className="w-full p-2">
+        <div key={index} className="w-full p-4">
           <MessageBox message={message}/>
           <div ref={messagesEndRef}/>
         </div>

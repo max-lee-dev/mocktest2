@@ -10,7 +10,10 @@ import {CoreMessage} from "ai";
 import {CustomMessage} from "@/app/utils/types";
 import MessageList from "@/app/components/ChatContainer/MessageList";
 
-export default function ChatContainer() {
+type ChatContainerProps = {
+  chatroomID: string;
+}
+export default function ChatContainer({chatroomID}: ChatContainerProps) {
 
   const [context, setContext] = useState<CoreMessage[]>([]);
   const [messages, setMessages] = useState<CustomMessage[]>([]);
@@ -20,7 +23,7 @@ export default function ChatContainer() {
 
     const updateData = async () => {
       // Fetch messages from Firestore
-      const messages = await fetchMessages();
+      const messages = await fetchMessages({chatroomID});
       // Update the state with the fetched messages
       setMessages(messages);
       const context = await convertMyMessagesToContext(messages);
@@ -35,7 +38,7 @@ export default function ChatContainer() {
   }, []);
 
   async function handleSend(message: string) {
-    const chatroomID = "someChatroomID"; // Replace with actual chatroom ID
+    // Replace with actual chatroom ID
     const messageData: CustomMessage = {
       text: message,
       when: new Date(),
@@ -43,7 +46,7 @@ export default function ChatContainer() {
       role: "user",
     }
     setMessages([...messages, messageData]);
-    await sendMessage(messageData);
+    await sendMessage({messageData, chatroomID});
 
 
     const response = await GetChatResponse({message: messageData, context: context}); // Adjust context as needed
@@ -53,7 +56,7 @@ export default function ChatContainer() {
       chatroomID,
       role: "assistant",
     }
-    await sendMessage(assistantMessage);
+    await sendMessage({messageData: assistantMessage, chatroomID});
     setMessages([...messages, messageData, assistantMessage]);
 
     const UserMessage: CoreMessage = {
@@ -72,7 +75,7 @@ export default function ChatContainer() {
   return (
     <div className={"min-h-[90%] w-full"}>
       <PopoutBorder className={"p-4 text-black bg-white"}>
-        <h1 className={"text-4xl font-extrabold border-b-2 border-black mx-4 py-4"}>Chat</h1>
+        <h1 className={"text-4xl font-extrabold border-b-2 border-black mx-4 py-4"}>{chatroomID}</h1>
 
         <div className={"flex flex-col h-full"}>
           <MessageList messages={messages}/>

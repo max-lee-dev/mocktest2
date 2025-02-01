@@ -13,5 +13,9 @@ service cloud.firestore {
     match /chats/{chatroomID}/messages/{messageID} {
       allow read, write: if true;
     }
+
+    match /chats/{chatroomID} {
+      allow read, write: if true;
+    }
   }
 }

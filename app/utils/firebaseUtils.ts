@@ -5,9 +5,13 @@ import {CustomMessage} from "@/app/utils/types";
 import {getDocs} from "@firebase/firestore";
 
 
-export const sendMessage = async (messageData: CustomMessage): Promise<void> => {
+type sendMessageProps = {
+  messageData: CustomMessage;
+  chatroomID: string;
+}
+export const sendMessage = async ({messageData, chatroomID}: sendMessageProps): Promise<void> => {
   // Create a reference to a new message document with an auto-generated ID
-  const messageRef = doc(collection(db, "chats", messageData.chatroomID, "messages"));
+  const messageRef = doc(collection(db, "chats", chatroomID, "messages"));
 
   // Add timestamp if not included
   const finalMessage = {
@@ -18,8 +22,12 @@ export const sendMessage = async (messageData: CustomMessage): Promise<void> => 
   await setDoc(messageRef, finalMessage);
 };
 
-export async function fetchMessages(): Promise<CustomMessage[]> {
-  const chatroomID = "someChatroomID"; // Replace with actual chatroom ID
+type fetchMessagesProps = {
+  chatroomID: string;
+}
+
+export async function fetchMessages({chatroomID}: fetchMessagesProps): Promise<CustomMessage[]> {
+
   const messagesRef = collection(db, "chats", chatroomID, "messages");
   // Order messages by timestamp
   const messagesQuery = query(messagesRef, orderBy("when", "asc"));
@@ -27,3 +35,18 @@ export async function fetchMessages(): Promise<CustomMessage[]> {
   const snapshot = await getDocs(messagesQuery);
   return snapshot.docs.map(doc => doc.data() as CustomMessage);
 }
+
+export async function createNewChatroom(): Promise<string> {
+  const randomID = Math.random().toString(36).substring(2, 15);
+  console.log(randomID)
+  const chatroomRef = doc(collection(db, "chats"), randomID);
+  await setDoc(chatroomRef, {});
+  return randomID;
+}
+
+export async function retrieveChatroomIDs(): Promise<string[]> {
+  const chatroomsRef = collection(db, "chats");
+  const snapshot = await getDocs(chatroomsRef);
+  return snapshot.docs.map(doc => doc.id);
+}
+

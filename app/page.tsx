@@ -1,4 +1,3 @@
-import ChatContainer from "@/app/components/ChatContainer/ChatContainer";
 import SidebarContainer from "@/app/components/Sidebar/SidebarContainer";
 
 export default function Home() {
@@ -8,9 +7,7 @@ export default function Home() {
         <SidebarContainer/>
       </div>
 
-      <div className={"p-8 w-[70%] min-h-[80vh] justify-end flex"}>
-        <ChatContainer/>
-      </div>
+      
     </div>
 
   );

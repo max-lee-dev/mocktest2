@@ -2,10 +2,10 @@ import React, {JSX} from "react";
 import {useRouter} from "next/navigation";
 import SpringyPopoutBorder from "@/app/components/CustomUI/SpringyPopupBorder";
 
-type SidebarContainerProps = {
+type OtherChatButtonProps = {
   chatroomID: string;
 }
-export default function SidebarContainer({chatroomID}: SidebarContainerProps): JSX.Element {
+export default function OtherChatButton({chatroomID}: OtherChatButtonProps): JSX.Element {
 
   const router = useRouter();
 
